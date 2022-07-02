@@ -1,10 +1,10 @@
 		body{
-	background: linear-gradient(#e91e63, #2196f3) ;
+	background: linear-gradient(#e91e63, purple) ;
 	font-family: sans-serif;
 
 }
 .firsthead{
-	color: #2196f3;
+	color: purple;
 	font-size: 300%;
 	font-style: italic;
 	font-weight: bolder;
@@ -13,6 +13,7 @@
 .secondhead{
 font-size: 160%;
 	font-weight: bold;
+	font-style: italic;
 }
 input.long{
 height: 30px;
