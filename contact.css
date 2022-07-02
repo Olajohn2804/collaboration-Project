@@ -1,0 +1,57 @@
+body{
+			font-family: sans-serif;
+			background: linear-gradient(#e91e63, purple) ;
+			text-align: center;
+		}
+		h1{
+		color: purple;	
+		font-style: italic;
+		font-family: cursive;
+		}
+		h2{
+			font-family: cursive;
+		}
+		h3{
+			font-family: cursive;
+			color: purple;
+		}
+		input{
+			height: 45px;
+			width: 35%;
+		}
+		button{
+			height: 45px;
+			width: 6%;
+			color: #e91e63;
+			background-color: white;
+			font-size: 160%;
+			cursor: pointer;
+		}
+		a.icon{
+			text-decoration: none;
+			font-size: 250%;
+			color: #e91e63;
+		}
+		a{
+			text-decoration: none;
+			font-size: 140%;
+			color: #e91e63;
+		}
+		.innertext{
+			color: red;
+			font-weight: bolder;
+		}
+		@media screen and (max-width: 800px) {
+			button{
+			height: 45px;
+			width: 13%;
+			color: #e91e63;
+			background-color: white;
+			font-size: 160%;
+			cursor: pointer;
+		}
+		input{
+			height: 35px;
+			width: 45%;
+		}
+		}
