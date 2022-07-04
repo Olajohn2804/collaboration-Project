@@ -9,14 +9,15 @@ let allClients=[]
 			firstname:fnam.value,
 			surname:snam.value,
 			email:emai.value,
-			password:pass.value
+			password:pass.value,
 		}
-		var confirmpassword=con.value
-		if(pass.value!=con.value){
-			intext.innerText=('The passwords inputed are different,Kindly reconfirm the password!')
+		let confirm=confir.value
+		let passwo=pass.value
+		if(passwo!=confirm){
+			intext.innerText=('The passwords inputed are different,Kindly reconfirm the password')
 		}
 		else if (fnam.value==''||snam.value==''||emai.value==''||pass.value==''||con.value==''){
-			intext.innerText=('Please Kindly input all fields!')
+			intext.innerText=('Please Kindly input all fields')
 		}else{
 			allClients.push(newClients)
 			location.assign('signin.html')
