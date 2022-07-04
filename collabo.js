@@ -1,4 +1,5 @@
 let allClients=[]
+// sign in starts
 	function getpreviousvalues(){
 		if(localStorage.allOfClients){
 			 allClient=JSON.parse(localStorage.allOfClients)
@@ -26,7 +27,8 @@ let allClients=[]
 		console.log(allClients)
 
 	}
-
+	// sign up ends
+	// sign in starts
 
 function signin(){
 		 Email=emai.value
@@ -46,8 +48,16 @@ function signin(){
 		 	}
 	}
 
-
-
+	// sign in ends
+	// dashboard javascript begins
+	greetings = () => {
+		i=JSON.parse(localStorage.indexes)
+		allClients = JSON.parse(localStorage.allOfClients)
+		console.log(allClients);
+		infos.innerText = `Hello ${allClients[i].firstname}, Welcome to your  dashboard`
+		userInfo.innerText= `Hello, ${allClients[i].firstname}`
+	}
+// dashboard ends
 
 
 //contact book javascript
@@ -98,5 +108,6 @@ function signin(){
 			}
 			
 			tab.innerHTML+=t
-		
-		}
+			
+	
+	}
