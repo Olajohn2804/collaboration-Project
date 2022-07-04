@@ -1,5 +1,4 @@
 let allClients=[]
-// sign in starts
 	function getpreviousvalues(){
 		if(localStorage.allOfClients){
 			 allClient=JSON.parse(localStorage.allOfClients)
@@ -27,8 +26,7 @@ let allClients=[]
 		console.log(allClients)
 
 	}
-	// sign up ends
-	// sign in starts
+
 
 function signin(){
 		 Email=emai.value
@@ -45,24 +43,28 @@ function signin(){
 		 		incorrect.innerText=('Invalid Email or Invalid Password')
 		 	}else{
 		 		location.assign('dashboard.html')
+		 		emai.value=''
+		 		pass.value=''
 		 	}
 	}
 
-	// sign in ends
+
+		// sign in ends
 	// dashboard javascript begins
 	greetings = () => {
 		i=JSON.parse(localStorage.indexes)
 		allClients = JSON.parse(localStorage.allOfClients)
-		console.log(allClients);
 		infos.innerText = `Hello ${allClients[i].firstname}, Welcome to your  dashboard`
 		userInfo.innerText= `Hello, ${allClients[i].firstname}`
+		console.log(i)
 	}
 // dashboard ends
 
 
+
 //contact book javascript
 	allContacts=[]
-		 getpreviousvalues=()=>{
+		 getpreviousvalue=()=>{
 			
 			i=JSON.parse(localStorage.indexes)
 			allClients=JSON.parse(localStorage.allOfClients)
@@ -71,7 +73,8 @@ function signin(){
 		}
 	}
 		 add=()=>{
-		
+		i=JSON.parse(localStorage.indexes)
+			allClients=JSON.parse(localStorage.allOfClients)
 			let newContacts={
 				name:nam.value ,
 				phonenumber:phone.value,
@@ -81,18 +84,22 @@ function signin(){
 				innertext.innerText=('Kindly fill in both name and number')
 			}
 			else{
+				nam.value=''
+				phone.value=''
+				eMail.value=''
 				innertext.innerText=('Contact added Successfully')
 				allContacts.push(newContacts)
+				
 			}
 			localStorage.allOfContacts=JSON.stringify (allContacts)
-			console.log(allContacts)
+			console.log(i)
+
 		}
 
 
 
 
 		 con=()=>{
-		
 		i=JSON.parse(localStorage.indexes)
 		allClients=JSON.parse(localStorage.allOfClients)
 		allContacts=JSON.parse(localStorage.allOfContacts)
@@ -108,6 +115,5 @@ function signin(){
 			}
 			
 			tab.innerHTML+=t
-			
-	
-	}
+		console.log(i)
+		}
