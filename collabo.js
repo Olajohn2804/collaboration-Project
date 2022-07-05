@@ -1,7 +1,7 @@
 let allClients=[]
 	function getpreviousvalues(){
 		if(localStorage.allOfClients){
-			 allClient=JSON.parse(localStorage.allOfClients)
+			 allClients=JSON.parse(localStorage.allOfClients)
 		}
 	}
 	function signup(){
@@ -9,14 +9,14 @@ let allClients=[]
 			firstname:fnam.value,
 			surname:snam.value,
 			email:emai.value,
-			password:pass.value,
+			password:pass.value
 		}
 		let confirm=confir.value
 		let passwo=pass.value
 		if(passwo!=confirm){
 			intext.innerText=('The passwords inputed are different,Kindly reconfirm the password')
 		}
-		else if (fnam.value==''||snam.value==''||emai.value==''||pass.value==''||con.value==''){
+		else if (fnam.value==''||snam.value==''||emai.value==''||pass.value==''||confir.value==''){
 			intext.innerText=('Please Kindly input all fields')
 		}else{
 			allClients.push(newClients)
@@ -47,6 +47,7 @@ function signin(){
 		 		pass.value=''
 		 	}
 	}
+	console.log(allClients)
 
 
 		// sign in ends
@@ -56,7 +57,7 @@ function signin(){
 		allClients = JSON.parse(localStorage.allOfClients)
 		infos.innerText = `Hello ${allClients[i].firstname}, Welcome to your  dashboard`
 		userInfo.innerText= `Hello, ${allClients[i].firstname}`
-		console.log(i)
+		console.log(allClients)
 	}
 // dashboard ends
 
@@ -99,10 +100,11 @@ function signin(){
 
 
 
-		 con=()=>{
+		 contactlist=()=>{
 		i=JSON.parse(localStorage.indexes)
 		allClients=JSON.parse(localStorage.allOfClients)
 		allContacts=JSON.parse(localStorage.allOfContacts)
+		
 	
 		t='<tr>'
 			for (let i = 0; i <allContacts.length; i++) {
@@ -115,5 +117,9 @@ function signin(){
 			}
 			
 			tab.innerHTML+=t
-		console.log(i)
-		}
+			console.log(allClients[i])
+		console.log(allClients[0].allContacts)
+		console.log(allContacts)
+		
+
+}
