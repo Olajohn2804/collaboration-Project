@@ -107,7 +107,7 @@ function signin(){
  				<td>${currentClientContact[i].name}  </td>
  				<td>${currentClientContact[i].phonenumber} </td>
  				<td>${currentClientContact[i].email}</td>
- 				<td><button onclick="Delete(${i})">Delete </button></td>
+ 				<td><button class='del' onclick="Delete(${i})">X</button></td>
  				</tr>`
     })
 }
@@ -119,11 +119,13 @@ const Delete = (inde)=>{
 	currentClientContact=JSON.parse(localStorage.allOfClients)[i].allContacts
     let filteredArray =currentClientContact.filter((item,ind)=>inde!=ind)
      currentClientContact = filteredArray
+     console.log(filteredArray)
+     console.log(currentClientContact)
      (localStorage.allOfClients)[i].allContacts=JSON.stringify(currentClientContact)
-    tab.innerHTML =""
-    contactlist()
-    console.log(filteredArray)
-    console.log(currentClientContact)
+     location.reload()
+    
+  
+    
 }
 
 
