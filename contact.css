@@ -1,26 +1,26 @@
-body{
+section{
 			font-family: sans-serif;
-			background: linear-gradient(#e91e63, purple) ;
 			text-align: center;
 		}
 		h1{
-		color: purple;	
+		color: black;	
 		font-style: italic;
 		font-family: cursive;
 		}
 		h2{
 			font-family: cursive;
+			color: #e91e63;
 		}
 		h3{
 			font-family: cursive;
-			color: purple;
+			color: black;
 		}
 		input{
-			height: 45px;
-			width: 35%;
+			height: 25px;
+			width: 30%;
 		}
-		button{
-			height: 45px;
+		button.sec{
+			height: 42px;
 			width: 6%;
 			color: #e91e63;
 			background-color: white;
@@ -29,20 +29,20 @@ body{
 		}
 		a.icon{
 			text-decoration: none;
-			font-size: 250%;
+			font-size: 180%;
 			color: #e91e63;
 		}
 		a{
 			text-decoration: none;
-			font-size: 140%;
+			font-size: 100%;
 			color: #e91e63;
 		}
 		.innertext{
 			color: red;
 			font-weight: bolder;
 		}
-		@media screen and (max-width: 800px) {
-			button{
+		@media screen and (max-width: 950px) {
+			button.sec{
 			height: 45px;
 			width: 13%;
 			color: #e91e63;
