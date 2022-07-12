@@ -10,9 +10,7 @@ let allClients=[]
 			surname:snam.value,
 			email:emai.value,
 			password:pass.value,
-			allContacts:[]
-			todoArray:[]
-			
+			allContacts:[]	
 		}
 		let confirm=confir.value
 		let passwo=pass.value
