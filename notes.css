@@ -1,0 +1,41 @@
+body{
+    background: linear-gradient( #e91e63, purple);
+}
+
+#input{
+ height: 50vh;
+ border-radius: 20px;
+ box-shadow: inset;
+ background-color: #f0f0f0;
+ width: 100vh;
+ 
+ }
+ #title{
+     border-radius: 25px;
+     box-shadow: inset;
+     background-color: #f0f0f0;
+     width: 100vh;
+ }
+#notes{
+    font-size: 40px;
+    color: purple;
+}
+#section{
+    width: 110vh;   
+}
+@media (max-width: 700px){
+    input, textarea{
+        height: 10vh !important;
+        width: 100% !important;
+    }
+    section{
+        width: 90% !important;
+
+    }
+    #notes{
+        font-size: 20px;
+    }
+    #one{
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,42 @@
+body{
+    background: linear-gradient( #e91e63, purple);
+    width: 100%;
+    min-height: 100vh;
+}
+
+#page{
+    color: white;
+    font-size: 40px;
+    margin-top: 50px;
+    
+}
+#des{
+    font-size:20px;
+    margin-top: 50px;
+    color: white;
+}
+#but{
+    margin-top: 200px;
+    margin-left: 500px;
+    width: 150px;
+    color: purple;
+}
+#but1{
+   background-color:  #f0f0f0;
+    margin-left: 500px;
+    width: 150px;
+    color:purple;
+}
+#but2{
+   background-color:  #f0f0f0;
+    margin-left: 800px;
+    width: 150px;
+    color:purple;
+    margin-top: 15px;
+}
+
+@media (max-width:700px) {
+    #section{
+        width: 80% !important;
+    }
+}
