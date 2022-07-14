@@ -9,7 +9,8 @@ let allClients=[]
 			firstname:fnam.value,
 			surname:snam.value,
 			email:emai.value,
-			password:pass.value
+			password:pass.value,
+			allContacts:[]	
 		}
 		let confirm=confir.value
 		let passwo=pass.value
@@ -64,62 +65,113 @@ function signin(){
 
 
 //contact book javascript
-	allContacts=[]
-		 getpreviousvalue=()=>{
+ 	allContacts=[]
+ 		 getpreviousvalue=()=>{
 			
-			i=JSON.parse(localStorage.indexes)
-			allClients=JSON.parse(localStorage.allOfClients)
-			if(localStorage.allOfContacts){
-			 allContacts=JSON.parse(localStorage.allOfContacts)
+ 			i=JSON.parse(localStorage.indexes)
+ 			currentClientContact=JSON.parse(localStorage.allOfClients)[i].allContacts
+ 			if(currentClientContact){
+ 			 allContacts=currentClientContact
+ 			}
+ 	}
+ 		 add=()=>{
+ 		i=JSON.parse(localStorage.indexes)
+ 			allClients=JSON.parse(localStorage.allOfClients)
+ 			let newContacts={
+ 				name:nam.value ,
+ 				phonenumber:phone.value,
+ 				email:eMail.value
+ 			}
+ 			if(nam.value==''||phone.value==''){
+ 				innertext.innerText=('Kindly fill in both name and number')
+ 			}
+ 			else{	
+ 				allContacts.push(newContacts)
+ 				allClients[i].allContacts = allContacts
+ 				localStorage.allOfClients = JSON.stringify(allClients);
+ 				nam.value=''
+ 				phone.value=''
+ 				eMail.value=''
+ 				innertext.innerText=('Contact added Successfully')
+ 			}
+ 			(localStorage.allOfClients)[i].allContacts=JSON.stringify(currentClientContact)
+ 		}
+
+
+
+ 		 const contactlist = ()=>{
+	i=JSON.parse(localStorage.indexes)
+ 	currentClientContact=JSON.parse(localStorage.allOfClients)[i].allContacts
+    currentClientContact.map((item,i)=>{
+        tab.innerHTML += `<tr><th>(${i+1}) </th>
+ 				<td>${currentClientContact[i].name}  </td>
+ 				<td>${currentClientContact[i].phonenumber} </td>
+ 				<td>${currentClientContact[i].email}</td>
+ 				<td><button class='del' onclick="Delete(${i})">X</button></td>
+ 				</tr>`
+    })
+}
+ 		
+ 
+
+const Delete = (inde)=>{
+	i=JSON.parse(localStorage.indexes)
+	currentClientContact=JSON.parse(localStorage.allOfClients)[i].allContacts
+    let filteredArray =currentClientContact.filter((item,ind)=>inde!=ind)
+     currentClientContact = filteredArray
+     console.log(filteredArray)
+     console.log(currentClientContact)
+     (localStorage.allOfClients)[i].allContacts=JSON.stringify(currentClientContact)
+     location.reload()
+    
+  
+    
+}
+
+
+
+
+
+
+// to-do javascripts begins
+	var todoArray = [];
+	addTodo = ()=> {
+		if(todoInput.value == ""){
+			alert("enter a value")
+		}else{
+			let userTodo = todoInput.value;
+			todoItem = {item:userTodo, done:false};
+			todoArray.push(todoItem);
+			todoInput.value = "";	
+			showTodos();
 		}
 	}
-		 add=()=>{
-		i=JSON.parse(localStorage.indexes)
-			allClients=JSON.parse(localStorage.allOfClients)
-			let newContacts={
-				name:nam.value ,
-				phonenumber:phone.value,
-				email:eMail.value
+ 
+	showTodos = ()=> {
+		 todoInfo = "";
+		 for(i=0;i<todoArray.length;i++){
+			if(todoArray[i].done){
+				todoInfo += `<div class="shadow p-3 mb-1 text-success">${todoArray[i].item}<button class="float-end btn btn-success btn-sm">DONE</button></div>`;
+			}else{
+			todoInfo += `<div class="shadow p-3 mb-1 text-danger">${todoArray[i].item}<button class="float-end btn-danger btn-sm" onclick="markDone(${i})">MARK AS DONE</button></div>`;
 			}
-			if(nam.value==''||phone.value==''){
-				innertext.innerText=('Kindly fill in both name and number')
-			}
-			else{
-				nam.value=''
-				phone.value=''
-				eMail.value=''
-				innertext.innerText=('Contact added Successfully')
-				allContacts.push(newContacts)
-				
-			}
-			localStorage.allOfContacts=JSON.stringify (allContacts)
-			console.log(i)
+		 }
+		 displayTodo.innerHTML = todoInfo;
+		 showCount();
+	}
+	showCount = ()=>{
+		let pending = todoArray.filter(todo => !todo.done)
+		taskCount.innerHTML = pending.length;
+	}
+	clearTodo = ()=>{
+		todoArray = [];
+		showTodos();
+	}
+	markDone = (index)=>{
+		todoArray[index].done = true;
+		// console.log(todoArray[index])
+		showTodos();
+	}
+// to-do javascripts ends
 
-		}
 
-
-
-
-		 contactlist=()=>{
-		i=JSON.parse(localStorage.indexes)
-		allClients=JSON.parse(localStorage.allOfClients)
-		allContacts=JSON.parse(localStorage.allOfContacts)
-		
-	
-		t='<tr>'
-			for (let i = 0; i <allContacts.length; i++) {
-				
-				t+='<th>'+(i+1) +'</th>'
-				t+='<td>'+(allContacts[i].name) + '</td>'
-				t+='<td>'+(allContacts[i].phonenumber) + '</td>'
-				t+='<td>'+(allContacts[i].email)+ '</td>'
-				t+='</tr>'
-			}
-			
-			tab.innerHTML+=t
-			console.log(allClients[i])
-		console.log(allClients[0].allContacts)
-		console.log(allContacts)
-		
-
-}
