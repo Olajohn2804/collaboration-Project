@@ -106,7 +106,7 @@ function signin(){
  				<td>${currentClientContact[i].name}  </td>
  				<td>${currentClientContact[i].phonenumber} </td>
  				<td>${currentClientContact[i].email}</td>
- 				<td><button class='del' onclick="Delete(${i})">X</button></td>
+ 				<td><button class='del' onclick="Delete(${i})"><i class="fa-duotone fa-trash"></i></button></td>
  				</tr>`
     })
 }
@@ -130,44 +130,141 @@ const Delete = (inde)=>{
 
 
 // to-do javascripts begins
-	 todoArray = [];
-	addTodo = ()=> {
-		if(todoInput.value == ""){
-			alert("enter a value")
-		}else{
-			let userTodo = todoInput.value;
-			todoItem = {item:userTodo, done:false};
-			todoArray.push(todoItem);
-			todoInput.value = "";	
-			showTodos();
+i = JSON.parse(localStorage.indexes)
+allClients = JSON.parse(localStorage.allOfClients)
+todoArray = [];
+// getPreviousTodos = () => {
+// 	showTodos()
+// };
+const addTodo = () => {
+	if (todoInput.value == "") {
+		alert("enter a value")
+	} else {
+		let userTodo = todoInput.value;
+		todoItem = { item: userTodo, done: false };
+		todoArray.push(todoItem);
+		// allClients[i].events = events
+		todoInput.value = "";
+		showTodos();
+	}
+	// for (let index = 0; index < allClients.length; index++) {
+	// 	if(index==i){
+	// 		todoArray=allClients[index].todoArrays;
+			
+	// 		if (todoInput.value != "") {
+	// 			let todoItem = { item: todoInput.value, done: false };
+				
+	// 			todoArray.push(todoItem);
+	// 			// console.log(todoArray[0]);
+	// 			allClients[i].todoArray = todoArray;
+	// 			allOfClients = JSON.stringify(allClients)
+	// 			todoInput.value = "";	
+				
+	// 			localStorage.allOfClients = JSON.stringify(allClients);
+	// 			todoInput.value = "";
+	// 			showTodos();
+				
+	// 		} else {
+	// 			alert("enter a value")
+	// 		}
+				
+	// 	}
+		
+	// }
+
+}
+
+
+showTodos = () => {
+	
+	// i = JSON.parse(localStorage.indexes)
+	// // currentClientTodos = JSON.parse(localStorage.allOfClients)[i].todoArray;
+	// for (ind=0; ind<allClients.length; ind++) {
+	// 	if(i==ind){
+	// 		// console.log(allClients[ind].todoArray)
+	// 	todoArray=allClients[ind].todoArray;
+	today = new Date
+		userInfo.innerText = `Welcome ${allClients[i].firstname}`
+	// 	todoArray=allClients[ind].todoArrays;
+		todoInfo = "";
+		for (i = 0; i < todoArray.length; i++) {
+		if (todoArray[i].done) {
+		todoInfo += `<div class="shadow p-3 mb-1 text-success">${todoArray[i].item}<button class="float-end btn btn-success btn-sm">DONE</button></div>`;
+		} else {
+			todoInfo += `<div class="shadow p-3 mb-1 text-danger">${todoArray[i].item}<button class="float-end btn-danger btn-sm" onclick="markDone(${i})">MARK AS DONE</button></div>`;
 		}
 	}
- 
-	showTodos = ()=> {
-		 todoInfo = "";
-		 for(i=0;i<todoArray.length;i++){
-			if(todoArray[i].done){
-				todoInfo += `<div class="shadow p-3 mb-1 text-success">${todoArray[i].item}<button class="float-end btn btn-success btn-sm">DONE</button></div>`;
-			}else{
-			todoInfo += `<div class="shadow p-3 mb-1 text-danger">${todoArray[i].item}<button class="float-end btn-danger btn-sm" onclick="markDone(${i})">MARK AS DONE</button></div>`;
-			}
-		 }
-		 displayTodo.innerHTML = todoInfo;
-		 showCount();
-	}
-	showCount = ()=>{
-		let pending = todoArray.filter(todo => !todo.done)
-		taskCount.innerHTML = pending.length;
-	}
-	clearTodo = ()=>{
-		todoArray = [];
-		showTodos();
-	}
-	markDone = (index)=>{
-		todoArray[index].done = true;
-		// console.log(todoArray[index])
-		showTodos();
-	}
+	displayTodo.innerHTML = todoInfo;
+	showCount();
+		}
+// 	}
+	
+// }
+showCount = () => {
+	let pending = todoArray.filter(todo => !todo.done)
+	taskCount.innerHTML = pending.length;
+}
+clearTodo = () => {
+
+	todoArray = [];
+	showTodos();
+}
+markDone = (index) => {
+	todoArray[index].done = true;
+	// console.log(todoArray[index])
+	showTodos();
+}
+
 // to-do javascripts ends
+// events javascript starts
+events = [];
+getPreviousEvent = () => {
+	// i  = JSON.parse(localStorage.indexes)
+	// currentClientEvents = JSON.parse(localStorage.allOfClients)[i].events;
+	// console.log(currentClientEvents)
+	// if(currentClientEvents){
+	// 	events = currentClientEvents;
+	// }
+}
+addEvents = () => {
+	if (eventInput.value == "") {
+		alert("enter a value")
+	} else {
+		let upcomingEvents = eventInput.value;
+		eventItem = { item: upcomingEvents, done: false };
+		events.push(eventItem);
+		// allClients[i].events = events
+		eventInput.value = "";
+		showEvents();
+	}
+}
 
-
+showEvents = () => {
+	eventsInfo = "";
+	for (i = 0; i < events.length; i++) {
+		// userInfo.innerText= `Hello, ${allClients[i].firstname}`
+		if (events[i].done) {
+			eventsInfo += `<div class="shadow p-3 mb-1 text-success">${events[i].item}<button class="float-end btn btn-success btn-sm">DONE</button></div>`;
+		} else {
+			eventsInfo += `<div class="shadow p-3 mb-1 text-danger">${events[i].item}<button class="float-end btn-danger btn-sm" onclick="markEvent(${i})">Mark As Done</button></div>`;
+		}
+	}
+	displayEvents.innerHTML = eventsInfo;
+	showEventCount();
+}
+showEventCount = () => {
+	let pending = events.filter(event => !event.done)
+	eventCount.innerHTML = pending.length;
+}
+clearEvents = () => {
+	events = [];
+	showEvents();
+}
+markEvent = (index) => {
+	events[index].done = true;
+	// console.log(todoArray[index])
+	showEvents();
+}
+today = new Date()
+console.log(today);
+	// events javascript ends
