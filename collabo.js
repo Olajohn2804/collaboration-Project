@@ -94,7 +94,6 @@ function signin(){
  				eMail.value=''
  				innertext.innerText=('Contact added Successfully')
  			}
- 			(localStorage.allOfClients)[i].allContacts=JSON.stringify(currentClientContact)
  		}
 
 
@@ -118,14 +117,11 @@ const Delete = (inde)=>{
 	i=JSON.parse(localStorage.indexes)
 	currentClientContact=JSON.parse(localStorage.allOfClients)[i].allContacts
     let filteredArray =currentClientContact.filter((item,ind)=>inde!=ind)
-     currentClientContact = filteredArray
-     console.log(filteredArray)
-     console.log(currentClientContact)
-     (localStorage.allOfClients)[i].allContacts=JSON.stringify(currentClientContact)
-     location.reload()
-    
-  
-    
+    currentClientContact = filteredArray
+    allClients=JSON.parse(localStorage.allOfClients)
+    allClients[i].allContacts = currentClientContact
+    localStorage.allOfClients = JSON.stringify(allClients)
+    location.reload()
 }
 
 
@@ -134,7 +130,7 @@ const Delete = (inde)=>{
 
 
 // to-do javascripts begins
-	var todoArray = [];
+	 todoArray = [];
 	addTodo = ()=> {
 		if(todoInput.value == ""){
 			alert("enter a value")
